@@ -3829,7 +3829,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
                 return cr;
             }
         }
-        String ref = ((XSSFCell)cell).getCTCell().getR();
+        String ref = new CellReference(cell).formatAsString();
         throw new IllegalArgumentException("Cell " + ref + " is not part of an array formula.");
     }
 

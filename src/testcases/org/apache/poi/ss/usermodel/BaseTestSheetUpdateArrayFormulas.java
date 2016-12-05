@@ -86,7 +86,8 @@ public abstract class BaseTestSheetUpdateArrayFormulas {
             cell.getArrayFormulaRange();
             fail("expected exception");
         } catch (IllegalStateException e){
-            assertEquals("Cell A1 is not part of an array formula.", e.getMessage());
+            String ref = new CellReference(cell).formatAsString();
+            assertEquals("Cell "+ref+" is not part of an array formula.", e.getMessage());
         }
 
         // row 3 does not yet exist
@@ -177,14 +178,16 @@ public abstract class BaseTestSheetUpdateArrayFormulas {
             cell.getArrayFormulaRange();
             fail("expected exception");
         } catch (IllegalStateException e){
-            assertEquals("Cell A1 is not part of an array formula.", e.getMessage());
+            String ref = new CellReference(cell).formatAsString();
+            assertEquals("Cell "+ref+" is not part of an array formula.", e.getMessage());
         }
 
         try {
             sheet.removeArrayFormula(cell);
             fail("expected exception");
         } catch (IllegalArgumentException e){
-            assertEquals("Cell A1 is not part of an array formula.", e.getMessage());
+            String ref = new CellReference(cell).formatAsString();
+            assertEquals("Cell "+ref+" is not part of an array formula.", e.getMessage());
         }
         
         workbook.close();

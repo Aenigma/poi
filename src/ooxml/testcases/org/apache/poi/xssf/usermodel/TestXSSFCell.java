@@ -589,9 +589,9 @@ public final class TestXSSFCell extends BaseTestXCell {
         final List<XSSFHyperlink> links = srcCell.getSheet().getHyperlinkList();
         assertEquals("number of hyperlinks on sheet", 2, links.size());
         assertEquals("source hyperlink",
-                new CellReference(srcCell).formatAsString(), links.get(0).getCellRef());
+                srcCell.getAddress().formatAsString(), links.get(0).getCellRef());
         assertEquals("destination hyperlink",
-                new CellReference(destCell).formatAsString(), links.get(1).getCellRef());
+                destCell.getAddress().formatAsString(), links.get(1).getCellRef());
         
         wb.close();
     }
@@ -631,7 +631,7 @@ public final class TestXSSFCell extends BaseTestXCell {
         links = srcCell.getSheet().getHyperlinkList();
         assertEquals("number of hyperlinks on sheet", 1, links.size());
         assertEquals("source hyperlink",
-                new CellReference(destCell).formatAsString(), links.get(0).getCellRef());
+                destCell.getAddress().formatAsString(), links.get(0).getCellRef());
         
         // Merge destCell's hyperlink to srcCell. Since destCell does have a hyperlink, this should copy destCell's hyperlink to srcCell.
         srcCell.copyCellFrom(destCell, policy);
@@ -641,9 +641,9 @@ public final class TestXSSFCell extends BaseTestXCell {
         links = srcCell.getSheet().getHyperlinkList();
         assertEquals("number of hyperlinks on sheet", 2, links.size());
         assertEquals("dest hyperlink",
-                new CellReference(destCell).formatAsString(), links.get(0).getCellRef());
+                destCell.getAddress().formatAsString(), links.get(0).getCellRef());
         assertEquals("source hyperlink",
-                new CellReference(srcCell).formatAsString(), links.get(1).getCellRef());
+                srcCell.getAddress().formatAsString(), links.get(1).getCellRef());
         
         wb.close();
     }

@@ -1548,7 +1548,7 @@ public final class TestXSSFSheet extends BaseTestXSheet {
         
         // Cell Formula
         cell = CellUtil.getCell(destRow, col++);
-        assertEquals("J7", new CellReference(cell).formatAsString());
+        assertEquals("J7", cell.getAddress().formatAsString());
         assertEquals("[Cell Formula] J7 cell type", CellType.FORMULA, cell.getCellTypeEnum());
         assertEquals("[Cell Formula] J7 cell formula", "5+2", cell.getCellFormula());
         System.out.println("Cell formula evaluation currently unsupported");
@@ -1556,7 +1556,7 @@ public final class TestXSSFSheet extends BaseTestXSheet {
         // Cell Formula with Reference
         // Formula row references should be adjusted by destRowNum-srcRowNum
         cell = CellUtil.getCell(destRow, col++);
-        assertEquals("K7", new CellReference(cell).formatAsString());
+        assertEquals("K7", cell.getAddress().formatAsString());
         assertEquals("[Cell Formula with Reference] K7 cell type",
                 CellType.FORMULA, cell.getCellTypeEnum());
         assertEquals("[Cell Formula with Reference] K7 cell formula",
